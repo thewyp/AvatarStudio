@@ -16,9 +16,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -62,20 +59,20 @@ public class AvatarStudio extends DialogFragment implements View.OnClickListener
     public static final  boolean DEFAULT_DIMENABLED                              = true;
     private File    mTmpFile;
     private File    mCropImageFile;
-    private boolean mNeedCrop;//是否裁剪
-    private boolean mDimEnabled;//背景是否模糊
-    private int     aspectX;//裁剪比例
-    private int     aspectY;//裁剪比例
-    private int     outputX;//裁剪大小
-    private int     outputY;//裁剪大小
-    private int     textColor;//文本颜色
+    private boolean mNeedCrop;
+    private boolean mDimEnabled;
+    private int     aspectX;
+    private int     aspectY;
+    private int     outputX;
+    private int     outputY;
+    private int     textColor;
     private String  cameraText;
     private String  galleryText;
     private String  cancelText;
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNeedCrop = getArguments().getBoolean(EXTRA_NEEDCROP, DEFAULT_NEEDCROP);
         aspectX = getArguments().getInt(EXTRA_CROP_ASPECTX, DEFAULT_CROP_ASPECTX);
@@ -89,7 +86,7 @@ public class AvatarStudio extends DialogFragment implements View.OnClickListener
         cancelText = getArguments().getString(EXTRA_TEXT_CANCEL, getString(R.string.cancel));
     }
 
-    @NonNull
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = new Dialog(getActivity(),
@@ -176,7 +173,7 @@ public class AvatarStudio extends DialogFragment implements View.OnClickListener
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == CAMAER_REQUEST_STORAGE_WRITE_ACCESS_PERMISSION) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 camera();
@@ -379,7 +376,7 @@ public class AvatarStudio extends DialogFragment implements View.OnClickListener
             return this;
         }
 
-        public Builder setTextColor(@ColorInt int color) {
+        public Builder setTextColor(int color) {
             mAvatarStudio.textColor = color;
             return this;
         }
