@@ -1,5 +1,5 @@
 ## 概要
-只需要几句代码就可以实现通用app个人中心头像的修改，支持打开原生相机、从原生相册选取及调用原生裁剪功能，适配android 6.0运行时权限及android 7.0以上，无需要您添加繁琐的FileProvider及xml文件。
+只需要几句代码就可以实现通用app个人中心头像的修改，支持打开原生相机、从原生相册选取及调用原生裁剪功能，适配android 6.0运行时权限及android 7.0以上，不需要您添加繁琐的FileProvider及xml文件。
 <br/>
 <br/>
 [download demo apk](https://raw.githubusercontent.com/thewyp/AvatarStudio/master/app-debug.apk)
