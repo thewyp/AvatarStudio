@@ -3,21 +3,21 @@
 
 ## 依赖
 >dependencies {<br>
->	...<br>
->	compile 'me.thewyp:avatar:1.0.3'<br>
->}
+	...<br>
+	compile 'me.thewyp:avatar:1.0.3'<br>
+}
 
 ## 使用
 > new AvatarStudio.Builder(activityContext)<br>
->                .needCrop(true)<br>
->                .setTextColor(Color.BLUE)<br>
->                .dimEnabled(true)<br>
->               .setAspect(1, 1)<br>
->                .setOutput(200, 200)<br>
->                .setText("打开相机", "从相册中选取", "取消")<br>
->                .show(new AvatarStudio.CallBack() {<br>
->                    @Override<br>
->                    public void callback(String uri) {<br>
->                         Picasso.with(activityContext).load(new File(uri)).into(mImageView);<br>
->                    }<br>
->                });<br>
+                .needCrop(true)<br>
+                .setTextColor(Color.BLUE)<br>
+                .dimEnabled(true)<br>
+               .setAspect(1, 1)<br>
+                .setOutput(200, 200)<br>
+                .setText("打开相机", "从相册中选取", "取消")<br>
+                .show(new AvatarStudio.CallBack() {<br>
+                    @Override<br>
+                    public void callback(String uri) {<br>
+                         Picasso.with(activityContext).load(new File(uri)).into(mImageView);<br>
+                    }<br>
+                });<br>
