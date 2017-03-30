@@ -15,15 +15,16 @@
 
 ## 使用
  <pre><code>new AvatarStudio.Builder(activityContext)
-                            .needCrop(true)
+                            .needCrop(true)//是否裁剪，默认裁剪
                             .setTextColor(Color.BLUE)
-                            .dimEnabled(true)
-                            .setAspect(1, 1)
-                            .setOutput(200, 200)
+                            .dimEnabled(true)//背景是否dim 默认true
+                            .setAspect(1, 1)//裁剪比例 默认1：1
+                            .setOutput(200, 200)//裁剪大小 默认200*200
                             .setText("打开相机", "从相册中选取", "取消")
                             .show(new AvatarStudio.CallBack() {
                                 @Override
                                 public void callback(String uri) {
+                                     //uri为图片路径
                                      Picasso.with(activityContext).load(new File(uri)).into(mImageView);
                                 }
                             });
