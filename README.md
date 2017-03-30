@@ -5,10 +5,10 @@
 >dependencies {<br>
 	...<br>
 	compile 'me.thewyp:avatar:1.0.3'<br>
-}
+>}
 
 ## 使用
-> new AvatarStudio.Builder(activityContext)<br>
+<code> new AvatarStudio.Builder(activityContext)<br>
                 .needCrop(true)<br>
                 .setTextColor(Color.BLUE)<br>
                 .dimEnabled(true)<br>
@@ -21,3 +21,4 @@
                          Picasso.with(activityContext).load(new File(uri)).into(mImageView);<br>
                     }<br>
                 });<br>
+</code>
