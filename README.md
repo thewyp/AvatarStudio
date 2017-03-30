@@ -8,7 +8,7 @@
 >}
 
 ## 使用
-<code> new AvatarStudio.Builder(activityContext)<br>
+ <pre><code>new AvatarStudio.Builder(activityContext)<br>
                 .needCrop(true)<br>
                 .setTextColor(Color.BLUE)<br>
                 .dimEnabled(true)<br>
@@ -20,5 +20,4 @@
                     public void callback(String uri) {<br>
                          Picasso.with(activityContext).load(new File(uri)).into(mImageView);<br>
                     }<br>
-                });<br>
-</code>
+                });<br></code></pre>
