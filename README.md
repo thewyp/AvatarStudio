@@ -9,7 +9,7 @@ dependencies {<br>
 
 ## 使用
 new AvatarStudio.Builder(activityContext)<br>
-                .needCrop(true)<br>
+>                .needCrop(true)<br>
                 .setTextColor(Color.BLUE)<br>
                 .dimEnabled(true)<br>
                 .setAspect(1, 1)<br>
