@@ -11,8 +11,7 @@
 
 
 ## 使用
- <pre><code>
-             new AvatarStudio.Builder(activityContext)
+ <pre><code>new AvatarStudio.Builder(activityContext)
                             .needCrop(true)
                             .setTextColor(Color.BLUE)
                             .dimEnabled(true)
