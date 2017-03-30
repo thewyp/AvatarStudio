@@ -1,14 +1,4 @@
 <resources>
-    <!--<string name="msg_no_camera">No system camera found</string>-->
-    <!--<string name="camera">camera</string>-->
-    <!--<string name="gallery">phoneAlbum</string>-->
-    <!--<string name="cancel">cencel</string>-->
-
-    <!--<string name="mis_permission_dialog_title">permission</string>-->
-    <!--<string name="mis_permission_dialog_ok">OK</string>-->
-    <!--<string name="mis_permission_dialog_cancel">拒绝</string>-->
-    <!--<string name="mis_permission_rationale_write_storage">需要您提供写/读存储权限</string>-->
-
     <string name="msg_no_camera">没有系统相机</string>
     <string name="camera">拍照</string>
     <string name="gallery">相册</string>

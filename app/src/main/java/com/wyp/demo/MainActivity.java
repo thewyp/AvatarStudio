@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .dimEnabled(true)
                 .setAspect(1, 1)
                 .setOutput(200, 200)
-                .setText("打开相机", "从相册中选取", "放弃")
+                .setText("打开相机", "从相册中选取", "取消")
                 .show(new AvatarStudio.CallBack() {
                     @Override
                     public void callback(final String uri) {
