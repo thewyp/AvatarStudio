@@ -10,8 +10,8 @@
 <pre><code>dependencies {
                 ...
                 compile 'me.thewyp:avatar:1.0.3'
-             }</code></pre>
-
+           }
+</code></pre>
 
 ## 使用
  <pre><code>new AvatarStudio.Builder(activityContext)
