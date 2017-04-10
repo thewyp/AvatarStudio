@@ -10,12 +10,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.ColorInt;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -35,45 +35,52 @@ import java.io.IOException;
 
 
 public class AvatarStudio extends DialogFragment implements View.OnClickListener {
-    private static final int    CAMAER_REQUEST_STORAGE_WRITE_ACCESS_PERMISSION  = 110;
-    private static final int    GALLERY_REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 111;
-    private static final int    REQUEST_CAMERA                                  = 100;
-    private static final int    REQUEST_GALLERY                                 = 101;
-    private static final int    REQUEST_CROP                                    = 102;
-    public static final  String EXTRA_NEEDCROP                                  = "needcrop";
-    public static final  String EXTRA_DIMENABLED                                = "dimEnabled";
-    public static final  String EXTRA_CROP_ASPECTX                              = "crop_aspectX";
-    public static final  String EXTRA_CROP_ASPECTY                              = "crop_aspectY";
-    public static final  String EXTRA_CROP_OUTPUTX                              = "crop_outputX";
-    public static final  String EXTRA_CROP_OUTPUTY                              = "crop_outputY";
-    public static final  String EXTRA_TEXT_COLOR                                = "text_color";
-    public static final  String EXTRA_TEXT_CAMERA                               = "text_camera";
-    public static final  String EXTRA_TEXT_GALLERY                              = "text_gallery";
-    public static final  String EXTRA_TEXT_CANCEL                               = "text_cancel";
-    private File mTmpFile;
-    private File mCropImageFile;
-    private boolean mNeedCrop   = true;
-    private boolean mDimEnabled = true;
-    private int     aspectX     = 1;
-    private int     aspectY     = 1;
-    private int     outputX     = 400;
-    private int     outputY     = 400;
-    private int     textColor   = 0xFF000000;
-    private String cameraText;
-    private String galleryText;
-    private String cancelText;
+    private static final int     CAMAER_REQUEST_STORAGE_WRITE_ACCESS_PERMISSION  = 110;
+    private static final int     GALLERY_REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 111;
+    private static final int     REQUEST_CAMERA                                  = 100;
+    private static final int     REQUEST_GALLERY                                 = 101;
+    private static final int     REQUEST_CROP                                    = 102;
+    public static final  String  EXTRA_NEEDCROP                                  = "needcrop";
+    public static final  String  EXTRA_DIMENABLED                                = "dimEnabled";
+    public static final  String  EXTRA_CROP_ASPECTX                              = "crop_aspectX";
+    public static final  String  EXTRA_CROP_ASPECTY                              = "crop_aspectY";
+    public static final  String  EXTRA_CROP_OUTPUTX                              = "crop_outputX";
+    public static final  String  EXTRA_CROP_OUTPUTY                              = "crop_outputY";
+    public static final  String  EXTRA_TEXT_COLOR                                = "text_color";
+    public static final  String  EXTRA_TEXT_CAMERA                               = "text_camera";
+    public static final  String  EXTRA_TEXT_GALLERY                              = "text_gallery";
+    public static final  String  EXTRA_TEXT_CANCEL                               = "text_cancel";
+    public static final  int     DEFAULT_CROP_ASPECTX                            = 1;
+    public static final  int     DEFAULT_CROP_ASPECTY                            = 1;
+    public static final  int     DEFAULT_CROP_OUTPUTX                            = 400;
+    public static final  int     DEFAULT_CROP_OUTPUTY                            = 400;
+    public static final  int     DEFAULT_TEXT_COLOR                              = Color.BLACK;
+    public static final  boolean DEFAULT_NEEDCROP                                = true;
+    public static final  boolean DEFAULT_DIMENABLED                              = true;
+    private File    mTmpFile;
+    private File    mCropImageFile;
+    private boolean mNeedCrop;
+    private boolean mDimEnabled;
+    private int     aspectX;
+    private int     aspectY;
+    private int     outputX;
+    private int     outputY;
+    private int     textColor;
+    private String  cameraText;
+    private String  galleryText;
+    private String  cancelText;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNeedCrop = getArguments().getBoolean(EXTRA_NEEDCROP);
-        aspectX = getArguments().getInt(EXTRA_CROP_ASPECTX);
-        aspectY = getArguments().getInt(EXTRA_CROP_ASPECTY);
-        outputX = getArguments().getInt(EXTRA_CROP_OUTPUTX);
-        outputY = getArguments().getInt(EXTRA_CROP_OUTPUTY);
-        textColor = getArguments().getInt(EXTRA_TEXT_COLOR);
-        mDimEnabled = getArguments().getBoolean(EXTRA_DIMENABLED);
+        mNeedCrop = getArguments().getBoolean(EXTRA_NEEDCROP, DEFAULT_NEEDCROP);
+        aspectX = getArguments().getInt(EXTRA_CROP_ASPECTX, DEFAULT_CROP_ASPECTX);
+        aspectY = getArguments().getInt(EXTRA_CROP_ASPECTY, DEFAULT_CROP_ASPECTY);
+        outputX = getArguments().getInt(EXTRA_CROP_OUTPUTX, DEFAULT_CROP_OUTPUTX);
+        outputY = getArguments().getInt(EXTRA_CROP_OUTPUTY, DEFAULT_CROP_OUTPUTY);
+        textColor = getArguments().getInt(EXTRA_TEXT_COLOR, DEFAULT_TEXT_COLOR);
+        mDimEnabled = getArguments().getBoolean(EXTRA_DIMENABLED, DEFAULT_DIMENABLED);
         cameraText = getArguments().getString(EXTRA_TEXT_CAMERA, getString(R.string.camera));
         galleryText = getArguments().getString(EXTRA_TEXT_GALLERY, getString(R.string.gallery));
         cancelText = getArguments().getString(EXTRA_TEXT_CANCEL, getString(R.string.cancel));
@@ -239,6 +246,7 @@ public class AvatarStudio extends DialogFragment implements View.OnClickListener
             return;
         switch (requestCode) {
             case REQUEST_CAMERA:
+                getActivity();
                 if (resultCode == Activity.RESULT_OK) {
                     if (mNeedCrop) {
                         crop(mTmpFile.getAbsolutePath());
@@ -368,7 +376,7 @@ public class AvatarStudio extends DialogFragment implements View.OnClickListener
             return this;
         }
 
-        public Builder setTextColor(@ColorInt int color) {
+        public Builder setTextColor(int color) {
             mAvatarStudio.textColor = color;
             return this;
         }

@@ -9,7 +9,7 @@
 ## 依赖
 <pre><code>dependencies {
                 ...
-                compile 'me.thewyp:avatar:1.0.3'
+                compile 'me.thewyp:avatar:1.0.4'
            }
 </code></pre>
 
